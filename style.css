@@ -3,6 +3,8 @@ body
 {
     margin:             0;
     overflow-x:         hidden;
+
+    margin-top:         30px;
 }
 
 .nobr
@@ -10,15 +12,33 @@ body
     white-space:        nowrap;
 }
 
-#container
+#tableau
 {
+    display:            -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack:   center;
+    -webkit-box-lines:  multiple;
+
+    display:            -webkit-flex;
+    -webkit-flex-wrap:  wrap;
+    -webkit-justify-content: space-around;
+
     display:            flex;
     flex-wrap:          wrap;
     justify-content:    space-around;
 }
 
+@media only screen and (max-height: 480px) and (orientation: portrait) {
+    #tableau {
+        -webkit-box-orient: vertical;
+    }
+}
+
 ul.tabcontainer
 {
+    display:            -webkit-box;
+    -webkit-box-orient: horizontal;
+
     display:            flex;
     margin:             0;
     padding:            0;
@@ -27,16 +47,17 @@ ul.tabcontainer
 
 ul.tabcontainer li
 {
+    -webkit-box-flex:   1;
     flex:               1 1 0;
+
     text-align:         center;
     padding:            1em;
     cursor:             pointer;
-
 }
 
 ul.tabcontainer li:not(:first-child)
 {
-    border-left:       1px solid black;
+    border-left:        1px solid black;
 }
 
 ul.tabcontainer .inactive
@@ -52,7 +73,12 @@ ul.tabcontainer .inactive
 
 .tabbody.inactive
 {
-    display:            none;
+    height:             0;
+    margin-top:         0;
+    margin-bottom:      0;
+    padding-top:        0;
+    padding-bottom:     0;
+    overflow:           hidden;
 }
 
 .selectionlist
@@ -80,6 +106,7 @@ ul.tabcontainer .inactive
     overflow-y:         auto;
     background:         white;
     box-shadow:         1em 0 1em rgba(0, 0, 0, 0.5);
+    -webkit-transition: left 0.2s ease;
     transition:         left 0.2s ease;
     z-index:            1;
 }
@@ -110,4 +137,3 @@ ul.tabcontainer .inactive
     cursor:             pointer;
     z-index:            1;
 }
-
